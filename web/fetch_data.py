@@ -58,12 +58,11 @@ with tab4:
 with tab5:
     if st.button("更新数据", key=15):
         ret = get_all_symbols(con)
-        for scale in [1, 5, 10, 30, 60, 120]:
+        # scale_list = [1, 5, 10, 30, 60, 120]
+        scale_list = [1]
+        for scale in scale_list:
             df = fetch_recent_history(symbols=ret, scale=scale)
             append_dataframe_to_parquet(df, base_path, f'stock_realtime_{scale}', duplicate_cols=['dt', 'symbol'])
-
-
-
 
 # history_stats = con.sql("""
 #         select 日期, count(*) as cnt
