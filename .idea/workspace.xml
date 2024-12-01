@@ -4,27 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2022fcaf-f613-469f-a963-7ae497e3b5bf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/alphaGo.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/base_feature.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/embedding.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/file_util.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/data_visualization.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/generate_feature.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/model_training.py" afterDir="false" />
+    <list default="true" id="2022fcaf-f613-469f-a963-7ae497e3b5bf" name="Changes" comment="init commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/streamlit_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamlit_app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/file_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/file_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/rpc_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/rpc_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/data_visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/data_visualization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/fetch_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/fetch_data.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -318,8 +304,30 @@
       <workItem from="1732333206423" duration="976000" />
       <workItem from="1732343684308" duration="960000" />
       <workItem from="1732358809540" duration="6959000" />
-      <workItem from="1732469183778" duration="4126000" />
+      <workItem from="1732469183778" duration="4803000" />
+      <workItem from="1732548628330" duration="3039000" />
+      <workItem from="1732901726255" duration="11157000" />
+      <workItem from="1732938831068" duration="3738000" />
+      <workItem from="1732966402604" duration="594000" />
+      <workItem from="1732975426692" duration="17384000" />
     </task>
+    <task id="LOCAL-00001" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1732474854731</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1732474854731</updated>
+    </task>
+    <task id="LOCAL-00002" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1732474938028</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1732474938028</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,11 +338,21 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="init commit" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/alphaGo$streamlit_app.coverage" NAME="streamlit_app Coverage Results" MODIFIED="1731774092091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

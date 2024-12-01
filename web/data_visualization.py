@@ -3,9 +3,15 @@ from pyecharts.charts import Line
 from pyecharts import options as opts
 from streamlit_echarts import st_pyecharts
 
-st.title("股票数据可视化")
+st.title("数据探查")
 
 con = st.session_state.db_connection
+
+
+
+
+
+
 
 code = st.text_input('股票代码')
 

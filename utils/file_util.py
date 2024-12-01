@@ -49,3 +49,8 @@ def append_dataframe_to_parquet(df, base_path, table_name, duplicate_cols=None):
         print("Done")
 
 
+def get_all_symbols(con):
+    sql = 'select distinct symbol from stock_symbol'
+    ret = con.execute(sql).df()['symbol'].tolist()
+    return ret
+
