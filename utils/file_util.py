@@ -26,7 +26,7 @@ def get_file_size(base_path, table_name):
 def get_table_meta(con, base_path, table_name):
     path = f'{base_path}/{table_name}.parquet'
     if not os.path.exists(path):
-        return
+        return {}
     update_date_sql = f'select max(dt) from {table_name}'
     num_rows_sql = f'select count(*) as cnt from {table_name}'
 
@@ -39,14 +39,13 @@ def get_table_meta(con, base_path, table_name):
 def append_dataframe_to_parquet(df, base_path, table_name, duplicate_cols=None):
     path = f'{base_path}/{table_name}.parquet'
     if not os.path.exists(path):
-        df.to_parquet(path, index=False)
+        df.to_parquet(path, index=True)
     else:
         old_df = pd.read_parquet(path)
         new_df = pd.concat([old_df, df])
         if duplicate_cols:
-            new_df.drop_duplicates(subset=duplicate_cols, keep='first', inplace=True)
+            new_df.drop_duplicates(subset=duplicate_cols, keep='last', inplace=True)
         new_df.to_parquet(path, index=False)
-        print("Done")
 
 
 def get_all_symbols(con):

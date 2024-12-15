@@ -1,8 +1,9 @@
 import streamlit as st
-import ibis
+
 import duckdb
 
 from utils.udf_util import *
+st.set_page_config(layout="wide")
 
 if 'db_connection' not in st.session_state:
     con = duckdb.connect()
