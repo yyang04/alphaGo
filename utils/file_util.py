@@ -42,10 +42,12 @@ def append_dataframe_to_parquet(df, base_path, table_name, duplicate_cols=None):
         df.to_parquet(path, index=True)
     else:
         old_df = pd.read_parquet(path)
-        new_df = pd.concat([old_df, df])
+        new_df = pd.concat([old_df, df], ignore_index=False)
         if duplicate_cols:
+            new_df.reset_index(inplace=True)
             new_df.drop_duplicates(subset=duplicate_cols, keep='last', inplace=True)
-        new_df.to_parquet(path, index=False)
+            new_df.set_index('dt', inplace=True)
+        new_df.to_parquet(path, index=True)
 
 
 def get_all_symbols(con):

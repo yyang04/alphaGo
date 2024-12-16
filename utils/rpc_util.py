@@ -41,7 +41,7 @@ def multithreading_tasks(func, args_list, num_workers=10, enable_progress_bar=Fa
 def fetch_stock_history(symbol, *args):
     start_date = args[0] if args else '19700101'
     try:
-        stock_zh_a_hist_df = ak.stock_zh_a_hist(symbol=symbol, start_date=start_date, adjust="qfq")
+        stock_zh_a_hist_df = ak.stock_zh_a_hist(symbol=symbol, period='daily', start_date=start_date, adjust="qfq")
     except Exception as _:
         print(f'[get_stock_history_error] name: {symbol}')
         return
@@ -75,15 +75,16 @@ def fetch_stocks_history(*args):
         '涨跌幅': 'change_percentage',
         '涨跌额': 'price_change'}
     )
-    combined_df['dt'] = pd.to_datetime(combined_df['dt']).dt.date
-    combined_df.set_index('dt', inplace=True)
+    if not combined_df.empty:
+        combined_df['dt'] = pd.to_datetime(combined_df['dt']).dt.date
+        combined_df.set_index('dt', inplace=True)
     return combined_df
 
 
 def fetch_global_index_history():
     df = ak.stock_dzjy_sctj()
     del (df['序号'])
-    df.rename(columns={
+    df = df.rename(columns={
         '交易日期': 'dt',
         '上证指数': 'sse_index',
         '上证指数涨跌幅': 'change_percentage_sse',
@@ -98,20 +99,22 @@ def fetch_global_index_history():
     return df
 
 
-def fetch_concept_history(symbol, period, start_date, end_date):
+def fetch_concept_history(symbol, *args):
     # period: [daily, weekly, monthly]
+    start_date = args[0] if args else '19700101'
+    end_date = datetime.today().strftime('%Y%m%d')
     try:
-        stock_board_concept_hist_em_df = ak.stock_board_concept_hist_em(symbol=symbol, period=period, start_date=start_date, end_date=end_date, adjust="qfq")
+        stock_board_concept_hist_em_df = ak.stock_board_concept_hist_em(symbol=symbol, period='daily', start_date=start_date, end_date=end_date, adjust="qfq")
         stock_board_concept_hist_em_df.loc[:, '板块名称'] = symbol
     except Exception as _:
-        print(f'[get_concept_history_error] name: {symbol}, start_date: {start_date}, end_date: {end_date}')
+        print(f'[get_concept_history_error] name: {symbol}')
         return
     return stock_board_concept_hist_em_df
 
 
-def fetch_concepts_history(start_date, end_date, period='daily'):
+def fetch_concepts_history(*args):
     df = ak.stock_board_concept_name_em()
-    args_list = [(getattr(row, '板块名称'), period, start_date, end_date) for row in df.itertuples()]
+    args_list = [(getattr(row, '板块名称'), *args) for row in df.itertuples()]
     result = multithreading_tasks(fetch_concept_history, args_list, num_workers=10, enable_progress_bar=True)
 
     if not result:
@@ -141,40 +144,48 @@ def fetch_concepts_history(start_date, end_date, period='daily'):
 
 def fetch_stock_concept(symbol):
     ret = ak.stock_board_concept_cons_em(symbol=symbol)
-    filter_df = ret[['代码']]
+    filter_df = ret[['代码']].copy()
     filter_df.loc[:, '板块名称'] = symbol
-    return ret
+    return filter_df
 
 
-def fetch_stock_concepts():
+def fetch_stock_concepts(*args):
     df = ak.stock_board_concept_name_em()
-    args_list = [getattr(row, '板块名称') for row in df.itertuples()]
+    args_list = [(getattr(row, '板块名称'),) for row in df.itertuples()]
     result = multithreading_tasks(fetch_stock_concept, args_list, num_workers=10, enable_progress_bar=True)
 
     if not result:
         return
 
     combined_df = pd.concat(result, ignore_index=True)
+
+    combined_df = combined_df.rename(columns={
+        '板块名称': 'name',
+        '代码': 'code'}
+    )
+
     combined_df['dt'] = datetime.now().date()
     combined_df.set_index('dt', inplace=True)
     return combined_df
 
 
-def fetch_industry_history(symbol, period, start_date, end_date):
+def fetch_industry_history(symbol, *args):
     # period: [日k, 周k, 月k]
+    start_date = args[0] if args else '19700101'
+    end_date = datetime.today().strftime('%Y%m%d')
     try:
-        stock_board_concept_hist_em_df = ak.stock_board_concept_hist_em(symbol=symbol, period=period, start_date=start_date, end_date=end_date, adjust="qfq")
+        stock_board_concept_hist_em_df = ak.stock_board_industry_hist_em(symbol=symbol, start_date=start_date, end_date=end_date, adjust="qfq")
         stock_board_concept_hist_em_df.loc[:, '板块名称'] = symbol
     except Exception as _:
-        print(f'[get_concept_history_error] name: {symbol}, start_date: {start_date}, end_date: {end_date}')
+        print(f'[get_industry_history_error] name: {symbol}, start_date: {start_date}, end_date: {end_date}')
         return
     return stock_board_concept_hist_em_df
 
 
-def fetch_industries_history(start_date, end_date, period='daily'):
+def fetch_industries_history(*args):
     df = ak.stock_board_industry_name_em()
-    args_list = [(getattr(row, '板块名称'), period, start_date, end_date) for row in df.itertuples()]
-    result = multithreading_tasks(fetch_concept_history, args_list, num_workers=10, enable_progress_bar=True)
+    args_list = [(getattr(row, '板块名称'), *args) for row in df.itertuples()]
+    result = multithreading_tasks(fetch_industry_history, args_list, num_workers=10, enable_progress_bar=True)
 
     if not result:
         return
@@ -202,21 +213,26 @@ def fetch_industries_history(start_date, end_date, period='daily'):
 
 
 def fetch_stock_industry(symbol):
-    ret = ak.stock_board_concept_cons_em(symbol=symbol)
-    filter_df = ret[['代码']]
+    ret = ak.stock_board_industry_cons_em(symbol=symbol)
+    filter_df = ret[['代码']].copy()
     filter_df.loc[:, '板块名称'] = symbol
-    return ret
+    return filter_df
 
 
-def fetch_stocks_industries():
+def fetch_stocks_industries(*args):
     df = ak.stock_board_industry_name_em()
-    args_list = [getattr(row, '板块名称') for row in df.itertuples()]
-    result = multithreading_tasks(fetch_stock_concept, args_list, num_workers=10, enable_progress_bar=True)
+    args_list = [(getattr(row, '板块名称'), ) for row in df.itertuples()]
+    result = multithreading_tasks(fetch_stock_industry, args_list, num_workers=10, enable_progress_bar=True)
 
     if not result:
         return
 
     combined_df = pd.concat(result, ignore_index=True)
+
+    combined_df = combined_df.rename(columns={
+        '板块名称': 'name',
+        '代码': 'code'}
+    )
     combined_df['dt'] = datetime.now().date()
     combined_df.set_index('dt', inplace=True)
     return combined_df

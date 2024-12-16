@@ -48,7 +48,9 @@ for index, row in meta_df.iterrows():
                 start_date = get_days_delta(start_date, 1)
                 args.append(start_date)
             df = eval(row.fetchFunction)(*args)
-            append_dataframe_to_parquet(df, base_path, row.tableName, duplicate_cols=['dt', 'symbol'])
+            duplicate_cols = row.duplicate.split('-')
+            if not df.empty:
+                append_dataframe_to_parquet(df, base_path, row.tableName, duplicate_cols=duplicate_cols)
 
 
 # meta_table_list = []
