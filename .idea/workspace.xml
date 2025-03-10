@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2022fcaf-f613-469f-a963-7ae497e3b5bf" name="Changes" comment="init commit">
+      <change afterPath="$PROJECT_DIR$/features/base_stock_feature.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/test2.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/base_feature.py" beforeDir="false" afterPath="$PROJECT_DIR$/features/base_feature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/streamlit_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamlit_app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/file_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/file_util.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/rpc_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/rpc_util.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/fetch_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/fetch_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/generate_feature.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/generate_feature.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +30,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="SQL File" />
-        <option value="Jupyter Notebook" />
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -46,6 +51,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/anaconda3/Lib/random.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$USER_HOME$/anaconda3/envs/py11/Lib/site-packages/streamlit/runtime/state/session_state.py" root0="SKIP_INSPECTION" />
     <setting file="file://$USER_HOME$/anaconda3/envs/py11/Lib/site-packages/streamlit_echarts/__init__.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProblemsViewState">
@@ -63,6 +69,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Python tests.Python tests in test_sql.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.-m streamlit test2.executor&quot;: &quot;Run&quot;,
     &quot;Python.dataset.executor&quot;: &quot;Run&quot;,
     &quot;Python.fetch_data.executor&quot;: &quot;Run&quot;,
     &quot;Python.fetch_raw_data.executor&quot;: &quot;Run&quot;,
@@ -71,6 +78,7 @@
     &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
     &quot;Python.test (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test2 (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.test2.executor&quot;: &quot;Run&quot;,
     &quot;Python.udf_util.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -80,13 +88,13 @@
     &quot;full.screen.before.presentation.mode&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/yufeng/PycharmProjects/alphaGo/data/feature&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/yufeng/PycharmProjects/stock_model&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -105,13 +113,14 @@
       <recent name="C:\Users\yufeng\PycharmProjects\alphaGo\data\feature" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yufeng\PycharmProjects\alphaGo\exp" />
       <recent name="C:\Users\yufeng\PycharmProjects\alphaGo\test" />
       <recent name="C:\Users\yufeng\PycharmProjects\alphaGo\model" />
       <recent name="C:\Users\yufeng\PycharmProjects\alphaGo\data\raw_data" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test2">
-    <configuration name="fetch_raw_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.-m streamlit test2">
+    <configuration name="-m streamlit test2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="alphaGo" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -120,39 +129,16 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fetch_raw_data.py" />
+      <option name="SCRIPT_NAME" value="-m streamlit test2" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="file_util" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="alphaGo" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/file_util.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
+      <option name="MODULE_MODE" value="true" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
       <method v="2" />
@@ -195,6 +181,29 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="C:\Users\yufeng\PycharmProjects\alphaGo\test\test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test2 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="alphaGo" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/test2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -249,13 +258,21 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.-m streamlit test2" />
+      <item itemvalue="Python.test2 (1)" />
+      <item itemvalue="Python.test2" />
+      <item itemvalue="Python.test" />
+      <item itemvalue="Python.udf_util" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test2" />
         <item itemvalue="Python.udf_util" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.file_util" />
-        <item itemvalue="Python.fetch_raw_data" />
+        <item itemvalue="Python.test2" />
+        <item itemvalue="Python.test2 (1)" />
+        <item itemvalue="Python.-m streamlit test2" />
       </list>
     </recent_temporary>
   </component>
@@ -324,6 +341,29 @@
       <workItem from="1733923055043" duration="5249000" />
       <workItem from="1734029386933" duration="4089000" />
       <workItem from="1734174542883" duration="37999000" />
+      <workItem from="1734779333991" duration="9733000" />
+      <workItem from="1734846310075" duration="7374000" />
+      <workItem from="1734879345203" duration="2804000" />
+      <workItem from="1736087508586" duration="732000" />
+      <workItem from="1736350553693" duration="258000" />
+      <workItem from="1738156667428" duration="86000" />
+      <workItem from="1738156782469" duration="326000" />
+      <workItem from="1738160005722" duration="1316000" />
+      <workItem from="1738217609967" duration="53000" />
+      <workItem from="1738219887703" duration="813000" />
+      <workItem from="1738304825589" duration="178000" />
+      <workItem from="1738305079943" duration="2748000" />
+      <workItem from="1738382980138" duration="4090000" />
+      <workItem from="1738407347978" duration="1653000" />
+      <workItem from="1738465935703" duration="1237000" />
+      <workItem from="1738495283404" duration="366000" />
+      <workItem from="1738495666243" duration="427000" />
+      <workItem from="1738496105605" duration="12048000" />
+      <workItem from="1739088060288" duration="596000" />
+      <workItem from="1739284849442" duration="2187000" />
+      <workItem from="1741492382706" duration="72000" />
+      <workItem from="1741492462135" duration="15000" />
+      <workItem from="1741533678336" duration="124000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -393,16 +433,17 @@
     <option name="LAST_COMMIT_MESSAGE" value="init commit" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/alphaGo$streamlit_app.coverage" NAME="streamlit_app Coverage Results" MODIFIED="1731774092091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/alphaGo$fetch_data.coverage" NAME="fetch_data Coverage Results" MODIFIED="1731864938353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web" />
-    <SUITE FILE_PATH="coverage/alphaGo$main.coverage" NAME="main Coverage Results" MODIFIED="1730609257566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/alphaGo$udf_util.coverage" NAME="udf_util Coverage Results" MODIFIED="1732211723083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
-    <SUITE FILE_PATH="coverage/alphaGo$.coverage" NAME=" Coverage Results" MODIFIED="1731243594176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/alphaGo$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1731521324257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/alphaGo$fetch_raw_data.coverage" NAME="fetch_raw_data Coverage Results" MODIFIED="1731854918062" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/alphaGo$file_util.coverage" NAME="file_util Coverage Results" MODIFIED="1732121682461" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
     <SUITE FILE_PATH="coverage/alphaGo$test.coverage" NAME="test Coverage Results" MODIFIED="1732367939753" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/alphaGo$dataset.coverage" NAME="dataset Coverage Results" MODIFIED="1731257019577" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
+    <SUITE FILE_PATH="coverage/alphaGo$streamlit_app.coverage" NAME="streamlit_app Coverage Results" MODIFIED="1731774092091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/alphaGo$main.coverage" NAME="main Coverage Results" MODIFIED="1730609257566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/alphaGo$.coverage" NAME=" Coverage Results" MODIFIED="1731243594176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/alphaGo$test2__1_.coverage" NAME="-m streamlit test2 Coverage Results" MODIFIED="1738394010584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/alphaGo$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1734198641348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

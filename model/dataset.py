@@ -1,4 +1,5 @@
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from sklearn.feature_extraction import FeatureHasher
 import time
 import random
 

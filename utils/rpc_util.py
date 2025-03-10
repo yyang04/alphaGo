@@ -11,7 +11,7 @@ import time
 from utils.constants import USER_AGENTS
 
 
-def common_stock(x:str):
+def common_stock(x: str):
     prefixes = ['300', '688', '43', '83', '87']
     return not any(x.startswith(p) for p in prefixes)
 
@@ -38,7 +38,7 @@ def multithreading_tasks(func, args_list, num_workers=10, enable_progress_bar=Fa
         return results
 
 
-def fetch_stock_history(symbol, *args):
+def fetch_single_stock_history(symbol, *args):
     start_date = args[0] if args else '19700101'
     try:
         stock_zh_a_hist_df = ak.stock_zh_a_hist(symbol=symbol, period='daily', start_date=start_date, adjust="qfq")
@@ -48,13 +48,13 @@ def fetch_stock_history(symbol, *args):
     return stock_zh_a_hist_df
 
 
-def fetch_stocks_history(*args):
+def fetch_stock_history(*args):
     stock_zh_a_spot_em_df = ak.stock_zh_a_spot_em()
     stock_zh_a_spot_em_df.dropna(subset=['最新价'], inplace=True)
     filter_df = stock_zh_a_spot_em_df[stock_zh_a_spot_em_df['代码'].apply(common_stock)]
 
     args_list = [(getattr(row, '代码'), *args) for row in filter_df.itertuples()]
-    result = multithreading_tasks(fetch_stock_history, args_list, num_workers=10, enable_progress_bar=True)
+    result = multithreading_tasks(fetch_single_stock_history, args_list, num_workers=10, enable_progress_bar=True)
 
     if not result:
         return
@@ -75,6 +75,9 @@ def fetch_stocks_history(*args):
         '涨跌幅': 'change_percentage',
         '涨跌额': 'price_change'}
     )
+
+    combined_df.drop(columns=['amplitude', 'change_percentage', 'price_change'], inplace=True)
+
     if not combined_df.empty:
         combined_df['dt'] = pd.to_datetime(combined_df['dt']).dt.date
         combined_df.set_index('dt', inplace=True)
@@ -99,7 +102,7 @@ def fetch_global_index_history():
     return df
 
 
-def fetch_concept_history(symbol, *args):
+def fetch_single_concept_history(symbol, *args):
     # period: [daily, weekly, monthly]
     start_date = args[0] if args else '19700101'
     end_date = datetime.today().strftime('%Y%m%d')
@@ -112,10 +115,10 @@ def fetch_concept_history(symbol, *args):
     return stock_board_concept_hist_em_df
 
 
-def fetch_concepts_history(*args):
+def fetch_concept_history(*args):
     df = ak.stock_board_concept_name_em()
     args_list = [(getattr(row, '板块名称'), *args) for row in df.itertuples()]
-    result = multithreading_tasks(fetch_concept_history, args_list, num_workers=10, enable_progress_bar=True)
+    result = multithreading_tasks(fetch_single_concept_history, args_list, num_workers=10, enable_progress_bar=True)
 
     if not result:
         return

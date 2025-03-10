@@ -30,8 +30,9 @@ def get_table_meta(con, base_path, table_name):
     update_date_sql = f'select max(dt) from {table_name}'
     num_rows_sql = f'select count(*) as cnt from {table_name}'
 
-    update_date = con.execute(update_date_sql).df().iloc[0, 0].strftime("%Y%m%d")
-    num_rows = con.execute(num_rows_sql).df().iloc[0, 0]
+    update_date = con.execute(update_date_sql).fetchone()[0].strftime("%Y%m%d")
+    num_rows = con.execute(num_rows_sql).fetchone()[0]
+
     size = get_file_size(base_path, table_name)
     return {'数据表': table_name, '更新日期': update_date, '行数': num_rows, '文件大小': size}
 
